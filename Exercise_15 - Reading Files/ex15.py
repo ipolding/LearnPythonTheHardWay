@@ -11,17 +11,16 @@ txt = open(filename)
 print "Here's your file %r:" % filename
 #print the files contents
 
-for line in txt:
-    print txt.readline()
-    print "bongos"
+print txt.readline()
 
-print txt.read()
+txt.close()
+
 #ask for a string to be used as a filename (it must be in the same directory)
-print "Type the filename again:"
-file_again = raw_input("> ")
+#print "Type the filename again:"
+#file_again = raw_input("> ")
 
 # open the file given above and assign it to the variable txt_again
-txt_again = open(file_again)
+#txt_again = open(file_again)
 
 #read the file again
-print txt_again.read()
+#print txt_again.read()
