@@ -11,9 +11,9 @@ config = {
     'author_email': 'My email.',
     'version': '0.1',
     'install_requires': ['nose'],
-    'packages': ['lexicon'],
+    'packages': ['NAME'],
     'scripts': [],
-    'name': 'ex48'
+    'name': 'projectname'
 }
 
 setup(**config)
