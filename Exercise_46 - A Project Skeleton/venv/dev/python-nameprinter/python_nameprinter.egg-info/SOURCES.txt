@@ -1,0 +1,9 @@
+setup.py
+bin/ExecNamePrinter.py
+nameprinter/NamePrinter.py
+nameprinter/__init__.py
+python_nameprinter.egg-info/PKG-INFO
+python_nameprinter.egg-info/SOURCES.txt
+python_nameprinter.egg-info/dependency_links.txt
+python_nameprinter.egg-info/requires.txt
+python_nameprinter.egg-info/top_level.txt
