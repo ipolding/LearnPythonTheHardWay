@@ -1,0 +1,5 @@
+def scan(self, phrase):
+	# This function needs to return a LIST of TUPLES
+    print "Stub for scanning words"
+
+

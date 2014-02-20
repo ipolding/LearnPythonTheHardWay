@@ -2,7 +2,7 @@ from nose.tools import *
 from ex48 import lexicon
 
 def test_directions():
-    """ check scanning direction words returns correct tuples """
+    """ check scanner identifies direction words in a given phrase """
     assert_equal(lexicon.scan("north"), [('direction', 'north')})
     result = lexicon.scan("north south east")
     # check that scanning three words returns all three tuples
@@ -11,6 +11,36 @@ def test_directions():
                           ('direction','east')])
                           
 def test_verbs():
-    """ check scanning verbs returns correct tuples"""
+    """ check scanner identifies verb words in a given phrase"""
     assert_equal(lexicon.scan("go"), [()])                          
-    result = lexicon.scan("go kill eat")                
+    result = lexicon.scan("go kill eat")
+
+def test_stops():
+    """ check scanner identifies stop words in a given phrase"""
+	assert_equal(lexicon.scan("the"),[('stop', 'the')])
+	result = lexicon.scan("the in of")	
+	assert_equal(result, [('stop', 'the'),
+			      ('stop', 'in'),
+			      ('stop', 'of')])
+
+def test_nouns():
+    """check scanner identifies the nouns in a given phrase"""
+	assert_equal(lexicon.scan("bear"), [('noun', 'bear')]
+	result = lexicon.scan("bear princess")
+	assert_equal(result, [('noun', 'bear'),
+						  ('noun', 'princess')])
+
+def test_numbers():
+	""" check scanner identifies the numbers in a given phrase"""
+	assert_equal(lexicon.scan("1234"), [('number', 1234)]
+	result = lexicon.scan("3 91234")
+	assert_equal(result, [('number', 3),
+						  ('number', 91234)])
+
+def test_errors():
+	"""check scanner identifies the errors in a given phrase"""
+	assert_equal(lexicon.scan("ASDFADFASDF"), [('error', 'ASDFADASDF')]
+	result = lexicon.scan("bear IAS princess")
+	assert_equal(result, [('noun', 'bear'),
+						  ('error', 'IAS'),
+						  ('noun', 'princess')])                 
