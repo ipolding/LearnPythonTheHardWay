@@ -1,0 +1,45 @@
+from nose.tools import *
+from lexicon import parser
+from lexicon import scanner
+
+
+def test_peek():
+    """ peek should return the first word from a list"""
+    phrase = "bear eat the princess"
+    scanner = scanner.Scanner()
+    word_list = scanner.scan(phrase)
+    assert_equal(parser.peek(word_list, "bear")
+    word_list = []
+    assert_equal(parser.peek(word_list, None)
+"""
+def test_match():
+    """ match should remove the first word from a list and compare its type"""
+    word_list = ["eat", "the", "bear"]
+    expecting = "verb"
+    assert_equal(parser.match([], "verb"), None)
+    assert_equal(parser.match(word_list, expecting), "eat")
+    assert_equal(parser.match(["asdfasf","asdf","ffssf"], "verb"), None)
+    
+def test_skip():
+    """ skip should remove any word of a given type"""
+    word_list = ["go", "north", "princess"]
+    parser.skip(word_list, "direction")
+    assert_equal(word_list, ["north", "princess"]
+
+def test_parse_verb():
+    """should return a verb from a word list"""
+    parser.parse_verb(word_list)
+    pass
+
+def test_parse_object():
+    """ should return an object word verb from a word list"""
+    pass
+
+def test_parse_subject():
+    """ should return a sentence with the subject word at the beginning"""
+    pass
+
+def test_parse_sentence():
+    """ check scanner identifies the errors in a given phrase"""
+    pass
+"""
