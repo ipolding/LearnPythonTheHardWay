@@ -11,7 +11,7 @@ class Sentence(object):
         self.object = object[1]
 
 def peek(word_list):
-    """ Returns the first word from a word list """
+    """ Returns the word type from the first tuple when given a list of  word_type:word tuples"""
     if word_list:
         word = word_list[0]
         return word[0]
@@ -19,8 +19,7 @@ def peek(word_list):
         return None
 
 def match(word_list, expecting):
-    """ Removes first word from a word list, compares to expecting
-    then returns or discards it """
+    """ Returns the first word_type:word tuple from a given list if it is the expected word types"""
     if word_list:
         word = word_list.pop(0)
 
@@ -32,12 +31,12 @@ def match(word_list, expecting):
         return None
 
 def skip(word_list, word_type):
-    """ Removes any word of a given type by calling match without using its result  """
+    """ Removes a specified word type by calling match without returning its result  """
     while peek(word_list) == word_type:
         match(word_list, word_type)
 
 def parse_verb(word_list):
-    """Returns a verb from a word list"""
+    """Returns a ('verb', 'verb') if possible else raises a ParserError"""
     skip(word_list, 'stop')
 
     if peek(word_list) == 'verb':
@@ -47,7 +46,7 @@ def parse_verb(word_list):
 
 
 def parse_object(word_list):
-    """ Returns an object word verb from a word list"""
+    """ Returns an ('noun/direction', 'noun/direction' tuple) if possible else raises a ParserError"""
     skip(word_list, 'stop')
     next = peek(word_list)
 
