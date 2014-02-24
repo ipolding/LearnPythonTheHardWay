@@ -45,6 +45,8 @@ neutron bomb in its container.  There's a keypad lock on the box
 and you need the code to get the bomb out.  If you get the code
 wrong 10 times then the lock closes forever and you can't
 get the bomb.  The code is 3 digits.
+
+What is the code?
 """)
 
 
@@ -110,12 +112,16 @@ escape_pod.add_paths({
 })
 
 def death(location):
+    death_room = Room('You are dead!', None)
     if location == "central_corridor":
-        Room("Killed by a Gothon", "You have had your funny bone ripped out by a Gothon. \nYou are dead.")
+        death_room.description = "You have had your funny bone ripped out by a Gothon."
+        return death_room
     elif location == "laser_weapon_armory":
-        Room("The bomb is lost forever", "With no bomb for leverage, the Gothons swarm in. \nYou are dead.")
+        death_room.description = "With no bomb for leverage, the Gothons swarm in. \nYou are dead."
+        return death_room
     elif location == "the_bridge":
-        Room("BOOM!","You were too rough. The bomb explodes on impact. \nYou are dead.")
+        death_room.description = "BOOM. The bomb explodes on impact."
+        return death_room
 
 the_bridge.add_paths({
     'throw the bomb': death("the_bridge"),

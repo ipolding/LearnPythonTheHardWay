@@ -39,10 +39,10 @@ class GameEngine(object):
     def POST(self):
         form = web.input(action=None)
 
-        #there is a bug here, can you fix it?
-        if session.room and form.action:
+        if session.room:
             session.room = session.room.go(form.action)
 
+        web.seeother("/game")
 
 if __name__ == "__main__":
     app.run()
